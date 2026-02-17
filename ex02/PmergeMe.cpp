@@ -169,6 +169,7 @@ void PmergeMe::sortAndDisplay()
         std::cout << _vec[i] << " ";
     std::cout << std::endl;
 
+    std::cout << std::fixed << std::setprecision(5);
     double timeVec = (endVec.tv_sec - startVec.tv_sec) * 1e6
                    + (endVec.tv_nsec - startVec.tv_nsec) / 1e3;
     double timeDeq = (endDeq.tv_sec - startDeq.tv_sec) * 1e6

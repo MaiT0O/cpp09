@@ -18,7 +18,7 @@
 class BitcoinExchange
 {
     private:
-        std::map<std::string, double> data;
+        std::map<std::string, double> _data;
         void isValidDate(const std::string& date) const;
         void isValidValue(const std::string& value) const;
         double getExchangeRate(const std::string& date) const; 

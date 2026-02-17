@@ -8,16 +8,15 @@ BitcoinExchange::~BitcoinExchange()
 {
 }
 
-BitcoinExchange::BitcoinExchange(const BitcoinExchange& other)
+BitcoinExchange::BitcoinExchange(const BitcoinExchange& copy) : _data(copy._data)
 {
-    this->data = other.data;
 }
 
 BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange& other)
 {
     if (this != &other)
     {
-        this->data = other.data;
+        this->_data = other._data;
     }
     return *this;
 }
@@ -56,10 +55,10 @@ void    BitcoinExchange::isValidValue(const std::string& value) const
 
 double BitcoinExchange::getExchangeRate(const std::string& date) const
 {
-    std::map<std::string, double>::const_iterator it = data.lower_bound(date);
-    if (it == data.end() || it->first != date)
+    std::map<std::string, double>::const_iterator it = _data.lower_bound(date);
+    if (it == _data.end() || it->first != date)
     {
-        if (it == data.begin())
+        if (it == _data.begin())
             throw std::runtime_error("No exchange rate available for this date");
         --it;
     }
@@ -86,7 +85,7 @@ void    BitcoinExchange::loadData(const std::string& filename)
                 continue;
             isValidDate(date);
             double value = std::strtod(valueStr.c_str(), NULL);
-            data[date] = value;
+            _data[date] = value;
         }
     }
     file.close();

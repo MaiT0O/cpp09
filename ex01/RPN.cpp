@@ -3,9 +3,8 @@
 RPN::RPN() {}
 RPN::~RPN() {}
 
-RPN::RPN(const RPN& other)
+RPN::RPN(const RPN& other) : _stack(other._stack)
 {
-    _stack = other._stack;
 }
 
 RPN& RPN::operator=(const RPN& other)

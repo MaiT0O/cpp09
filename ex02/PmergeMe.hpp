@@ -7,15 +7,13 @@
 #include <climits>
 #include <cctype>
 #include <cstdlib>
+#include <ctime>
 
 class PmergeMe
 {
     private:
         std::vector<int> _vec;
         std::deque<int>  _deq;
-
-        void mergeInsertSortVector();
-        void mergeInsertSortDeque();
 
     public:
         PmergeMe(char **argv);
